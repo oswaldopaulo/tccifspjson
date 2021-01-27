@@ -42,17 +42,28 @@ public class MainController {
 	
 	@CrossOrigin
 	@GetMapping(path="/loja") // Map ONLY POST Requests
-	public @ResponseBody  Iterable<Loja> getAllLoja(@RequestParam String token) {
+	public @ResponseBody  Iterable<Loja> getAllLoja(@RequestParam String token,@RequestParam Integer idloja) {
+		
+		
+		if(token==null) return null;
 		
 		Empresas emp2 = new Empresas();
 		 Iterable<Empresas> emp = empresasRepository.findByToken(token);
+		 
+		 if(emp==null) return null;
+		 
 		 for(Empresas s: emp){
 				emp2 = s;
 			}
 	
+		 if(idloja!=null) {
+			 return lojaRepository.findByidloja(idloja);
+		 }
 		
 		return lojaRepository.findByidempresa(emp2.getId());
 	}
+	
+	
 	
 	
 	

@@ -18,6 +18,7 @@ public interface LojaRepository extends CrudRepository<Loja, String> {
 	
 	List<Loja> findByEmpresas(Empresas empresas);
 	List<Loja> findByidempresa(int idmpresa);
+	List<Loja> findByidloja(int idloja);
 
 }
 
