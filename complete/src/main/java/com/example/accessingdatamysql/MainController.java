@@ -24,6 +24,9 @@ public class MainController {
 	
 	@Autowired
 	private LojaRepository lojaRepository;
+	
+	@Autowired
+	private Produtos_imagensRepository produtos_imagensRepository;
 
 
 
@@ -42,7 +45,7 @@ public class MainController {
 	
 	@CrossOrigin
 	@GetMapping(path="/loja") // Map ONLY POST Requests
-	public @ResponseBody  Iterable<Loja> getAllLoja(@RequestParam String token,@RequestParam Integer idloja) {
+	public @ResponseBody  Iterable<Loja> getAllLoja(@RequestParam(required = false) String token,@RequestParam(required = false)Integer idloja) {
 		
 		
 		if(token==null) return null;
@@ -61,6 +64,16 @@ public class MainController {
 		 }
 		
 		return lojaRepository.findByidempresa(emp2.getId());
+	}
+	
+	
+	@CrossOrigin
+	@GetMapping(path="/pics") // Map ONLY POST Requests
+	public @ResponseBody  Iterable<Produtos_imagens> getImagens(@RequestParam(required = false)Integer produto) {
+		
+		
+		if(produto==null) return null;
+		return produtos_imagensRepository.findByProduto(produto);
 	}
 	
 	
