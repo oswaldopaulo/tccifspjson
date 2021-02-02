@@ -27,6 +27,9 @@ public class MainController {
 	
 	@Autowired
 	private Produtos_imagensRepository produtos_imagensRepository;
+	
+	@Autowired
+	private TransacaoRepository transacaoRepository;
 
 
 
@@ -64,6 +67,16 @@ public class MainController {
 		 }
 		
 		return lojaRepository.findByidempresa(emp2.getId());
+	}
+	
+	@CrossOrigin
+	@GetMapping(path="/transacoes") // Map ONLY POST Requests
+	public @ResponseBody  Iterable<Transacao> getAllTransacao(@RequestParam(required = false) String token,@RequestParam(required = false)Integer iduser) {
+		
+		
+		
+		
+		return transacaoRepository.findAll();
 	}
 	
 	
