@@ -23,6 +23,8 @@ public class Produto {
 	
 	@OneToMany(mappedBy = "produto")
 	private List<Loja> loja;
+	
+	
 
 	public int getId() {
 		return id;

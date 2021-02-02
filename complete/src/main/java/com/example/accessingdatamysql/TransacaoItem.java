@@ -20,8 +20,8 @@ public class TransacaoItem {
 	private int id;
 	
 	
-	
-	private Integer id_trans; 
+	@Column(name="id_trans")
+	private Integer idtrans; 
 	private Integer id_produto; 
 	private String description; 
 	private Integer quantity; 
@@ -29,10 +29,8 @@ public class TransacaoItem {
 	
 
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "id_trans",nullable=false, insertable=false, updatable=false)
-	private TransacaoItem transacaoitem;
 
+	
 	public int getId() {
 		return id;
 	}
@@ -41,12 +39,12 @@ public class TransacaoItem {
 		this.id = id;
 	}
 
-	public Integer getId_trans() {
-		return id_trans;
+	public Integer getIdtrans() {
+		return idtrans;
 	}
 
-	public void setId_trans(Integer id_trans) {
-		this.id_trans = id_trans;
+	public void setId_trans(Integer idtrans) {
+		this.idtrans = idtrans;
 	}
 
 	public Integer getId_produto() {
@@ -71,6 +69,14 @@ public class TransacaoItem {
 
 	public void setPrice_unit(Double price_unit) {
 		this.price_unit = price_unit;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	

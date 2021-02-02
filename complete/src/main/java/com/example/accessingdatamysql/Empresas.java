@@ -32,8 +32,7 @@ public class Empresas {
 	@OneToMany(mappedBy = "empresas")
 	private List<Loja> loja;
 	
-	@OneToMany(mappedBy = "empresas")
-	private List<Transacao> transacao;
+	
 	
 	public String getToken() {
 		return token;

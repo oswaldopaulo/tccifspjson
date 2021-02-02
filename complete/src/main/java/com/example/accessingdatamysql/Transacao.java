@@ -28,21 +28,13 @@ public class Transacao {
 	private String frete; 
 	private double valorfrete;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "idempresa",nullable=false, insertable=false, updatable=false)
-	private Empresas empresas;
-  
+	  
 
 
-	@OneToMany(mappedBy = "transacaoitem")
-	private List<TransacaoItem> transacaoitem;
+
   
 	
-	public Empresas getEmpresa() {
-		return empresas;
-	}
-
-
+	
 	public int getId() {
 		return id;
 	}

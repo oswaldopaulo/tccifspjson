@@ -30,6 +30,9 @@ public class MainController {
 	
 	@Autowired
 	private TransacaoRepository transacaoRepository;
+	
+	@Autowired
+	private TransacaoItemRepository transacaoitemRepository;
 
 
 
@@ -70,15 +73,25 @@ public class MainController {
 	}
 	
 	@CrossOrigin
+	@GetMapping(path="/transacoesitem") // Map ONLY POST Requests
+	public @ResponseBody  Iterable<TransacaoItem> getAllTransacaoItem(@RequestParam(required = false) String token,@RequestParam(required = false)Integer idtrans) {
+		
+		if(idtrans==null) return null;
+		
+		
+		return transacaoitemRepository.findByidtrans(idtrans);
+	}
+	
+	
+	@CrossOrigin
 	@GetMapping(path="/transacoes") // Map ONLY POST Requests
 	public @ResponseBody  Iterable<Transacao> getAllTransacao(@RequestParam(required = false) String token,@RequestParam(required = false)Integer iduser) {
 		
 		
+		if(iduser==null) return null;
 		
-		
-		return transacaoRepository.findAll();
+		return transacaoRepository.findByiduser(iduser);
 	}
-	
 	
 	@CrossOrigin
 	@GetMapping(path="/pics") // Map ONLY POST Requests
