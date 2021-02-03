@@ -31,3 +31,5 @@ dependency-reduced-pom.xml
 
 .vscode/
 README.html
+
+complete\src\main\resources\application.properties
